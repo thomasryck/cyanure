@@ -606,12 +606,15 @@ public:
         _minibatch = 1;
         _mu = _regul.id() == L2 ? _regul.strong_convexity() : 0;
         _kappa = _loss.kappa();
-        if (_loss.id() == PPA)
+        if (_loss.id() == PPA){
+            cout << "Here" << endl;
             _mu += _kappa;
+        }
         _isprox = (_regul.id() != L2 || _regul.intercept()) && _regul.id() != NONE;
         _is_lazy = _isprox && _regul.is_lazy() && _loss.is_sparse();
         _extern_zis = false;
         _count = 0;
+        cout << "This the value of mu: " <<_mu << endl;
     };
 
     virtual void set_dual_variable(const D& dual0)
