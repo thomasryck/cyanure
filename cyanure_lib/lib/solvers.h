@@ -607,7 +607,7 @@ public:
         _mu = _regul.id() == L2 ? _regul.strong_convexity() : 0;
         _kappa = _loss.kappa();
         if (_loss.id() == PPA){
-            cout << "Here" << endl;
+            cout << "Update mu" << endl;
             _mu += _kappa;
         }
         _isprox = (_regul.id() != L2 || _regul.intercept()) && _regul.id() != NONE;
