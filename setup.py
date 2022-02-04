@@ -6,6 +6,10 @@ import struct
 import contextlib
 import os
 
+import sys
+
+sys.command("$(brew --prefix openblas)")
+
 # Override sdist to always produce .zip archive
 from distutils.command.sdist import sdist as _sdist
 
@@ -21,7 +25,7 @@ if platform.system() == "Darwin":
     os.environ["CXX"] = "/usr/local/opt/llvm/bin/clang++"
     os.environ["LDFLAGS"] = "-L/usr/local/opt/openblas/lib"
     os.environ["CPPFLAGS"] = "-I/usr/local/opt/openblas/include"
-    
+
 def getBlas():
     file_ = open("npConfg_file.txt", "w")
     with contextlib.redirect_stdout(file_):
