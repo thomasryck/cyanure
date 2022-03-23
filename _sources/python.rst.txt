@@ -12,7 +12,7 @@ The Regression Class
    :show-inheritance:
    :member-order: bysource
 
-The Classifier Class
+The MultiClassifier Class
 -------------------------
 
 .. autoclass:: MultiClassifier
