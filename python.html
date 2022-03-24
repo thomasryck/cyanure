@@ -98,10 +98,23 @@ be real values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>loss: string, default=’square’</strong></dt><dd><p>Only the square loss is implemented at this point</p>
+<dt><strong>loss</strong><span class="classifier">string, default=’square’</span></dt><dd><p>Loss function to be used. Possible choices are
+- ‘square’ =&gt;  L(y,z) = 0.5 ( y-z)^2
+- ‘logistic’ =&gt; L(y,z) = log(1 + e^{-y z} )
+- ‘sqhinge’ or ‘squared_hinge’ =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2
+- ‘safe-logistic’ =&gt; L(y,z) = e^{ yz - 1 } - y z  if yz &lt;= 1</p>
+<blockquote>
+<div><p>and 0 otherwise</p>
+</div></blockquote>
 <ul class="simple">
-<li><p>‘square’ =&gt;  <span class="math notranslate nohighlight">\(L(y,z) = \frac{1}{2} ( y-z)^2\)</span></p></li>
+<li><dl class="simple">
+<dt>‘multiclass-logistic’ =&gt; multinomial logistic (see Latex</dt><dd><p>documentation).</p>
+</dd>
+</dl>
+</li>
 </ul>
+<p>Note that for binary classification, we assume the y to be of
+the form {-1,+1}</p>
 </dd>
 <dt><strong>penalty: string, default=’none’</strong></dt><dd><p>Regularization function psi. Possible choices are</p>
 <p>For binary_problem problems
@@ -149,32 +162,32 @@ multivariate problems)</p>
 - ‘auto’
 see the Latex documentation for more details.
 If you are unsure, use ‘auto’</p>
-<p>tol: float, default=’1e-3’
-Tolerance parameter. For almost all combinations of loss and
+</dd>
+<dt><strong>tol: float, default=’1e-3’</strong></dt><dd><p>Tolerance parameter. For almost all combinations of loss and
 penalty functions, this parameter is based on a duality gap.
 Assuming the (non-negative) objective function is “f” and its
 optimal value is “f^*”, the algorithm stops with the guarantee</p>
 <p>f(x_t) - f^*  &lt;=  tol f(x_t)</p>
-<p>max_iter: int, default=500
-Maximum number of iteration of the algorithm in terms of passes
+</dd>
+<dt><strong>max_iter: int, default=500</strong></dt><dd><p>Maximum number of iteration of the algorithm in terms of passes
 over the data</p>
-<p>duality_gap_interval: int, default=10
-Frequency of duality-gap computation</p>
-<p>verbose: boolean, default=True
-Display information or not</p>
-<p>n_threads: int, default=-1
-maximum number of cores the method may use (-1 = all cores).
+</dd>
+<dt><strong>duality_gap_interval: int, default=10</strong></dt><dd><p>Frequency of duality-gap computation</p>
+</dd>
+<dt><strong>verbose: boolean, default=True</strong></dt><dd><p>Display information or not</p>
+</dd>
+<dt><strong>n_threads: int, default=-1</strong></dt><dd><p>maximum number of cores the method may use (-1 = all cores).
 Note that more cores is not always better.</p>
-<p>seed: int, default=0
-random seed</p>
-<p>restart: boolean, default=False
-use a restart strategy (useful for computing regularization path)</p>
-<p>binary_problem: boolean, default=True
-binary_problem or multivariate problems</p>
-<p>limited_memory_qning: int, default=20
-memory parameter for the qning method</p>
-<p>fista_restart: int, default=50
-restart strategy for fista</p>
+</dd>
+<dt><strong>seed: int, default=0</strong></dt><dd><p>random seed</p>
+</dd>
+<dt><strong>restart: boolean, default=False</strong></dt><dd><p>use a restart strategy (useful for computing regularization path)</p>
+</dd>
+<dt><strong>binary_problem: boolean, default=True</strong></dt><dd><p>binary_problem or multivariate problems</p>
+</dd>
+<dt><strong>limited_memory_qning: int, default=20</strong></dt><dd><p>memory parameter for the qning method</p>
+</dd>
+<dt><strong>fista_restart: int, default=50</strong></dt><dd><p>restart strategy for fista</p>
 </dd>
 </dl>
 </dd>

@@ -517,10 +517,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    loss: string, default=&#39;square&#39;</span>
-<span class="sd">        Only the square loss is implemented at this point</span>
-
-<span class="sd">        - &#39;square&#39; =&gt;  :math:`L(y,z) = \\frac{1}{2} ( y-z)^2`</span>
+<span class="sd">    loss : string, default=&#39;square&#39;</span>
+<span class="sd">        Loss function to be used. Possible choices are</span>
+<span class="sd">        - &#39;square&#39; =&gt;  L(y,z) = 0.5 ( y-z)^2</span>
+<span class="sd">        - &#39;logistic&#39; =&gt; L(y,z) = log(1 + e^{-y z} )</span>
+<span class="sd">        - &#39;sqhinge&#39; or &#39;squared_hinge&#39; =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2</span>
+<span class="sd">        - &#39;safe-logistic&#39; =&gt; L(y,z) = e^{ yz - 1 } - y z  if yz &lt;= 1</span>
+<span class="sd">                                and 0 otherwise</span>
+<span class="sd">        - &#39;multiclass-logistic&#39; =&gt; multinomial logistic (see Latex</span>
+<span class="sd">                                    documentation).</span>
+<span class="sd">        Note that for binary classification, we assume the y to be of</span>
+<span class="sd">        the form {-1,+1}</span>
 
 <span class="sd">    penalty: string, default=&#39;none&#39;</span>
 <span class="sd">        Regularization function psi. Possible choices are</span>
@@ -571,7 +578,7 @@
 <span class="sd">        see the Latex documentation for more details.</span>
 <span class="sd">        If you are unsure, use &#39;auto&#39;</span>
 
-<span class="sd">        tol: float, default=&#39;1e-3&#39;</span>
+<span class="sd">    tol: float, default=&#39;1e-3&#39;</span>
 <span class="sd">        Tolerance parameter. For almost all combinations of loss and</span>
 <span class="sd">        penalty functions, this parameter is based on a duality gap.</span>
 <span class="sd">        Assuming the (non-negative) objective function is &quot;f&quot; and its</span>
@@ -579,34 +586,34 @@
 
 <span class="sd">        f(x_t) - f^*  &lt;=  tol f(x_t)</span>
 
-<span class="sd">        max_iter: int, default=500</span>
+<span class="sd">    max_iter: int, default=500</span>
 <span class="sd">        Maximum number of iteration of the algorithm in terms of passes</span>
 <span class="sd">        over the data</span>
 
-<span class="sd">        duality_gap_interval: int, default=10</span>
+<span class="sd">    duality_gap_interval: int, default=10</span>
 <span class="sd">        Frequency of duality-gap computation</span>
 
-<span class="sd">        verbose: boolean, default=True</span>
+<span class="sd">    verbose: boolean, default=True</span>
 <span class="sd">        Display information or not</span>
 
-<span class="sd">        n_threads: int, default=-1</span>
+<span class="sd">    n_threads: int, default=-1</span>
 <span class="sd">        maximum number of cores the method may use (-1 = all cores).</span>
 <span class="sd">        Note that more cores is not always better.</span>
 
-<span class="sd">        seed: int, default=0</span>
+<span class="sd">    seed: int, default=0</span>
 <span class="sd">        random seed</span>
 
-<span class="sd">        restart: boolean, default=False</span>
+<span class="sd">    restart: boolean, default=False</span>
 <span class="sd">        use a restart strategy (useful for computing regularization path)</span>
 
-<span class="sd">        binary_problem: boolean, default=True</span>
+<span class="sd">    binary_problem: boolean, default=True</span>
 <span class="sd">        binary_problem or multivariate problems</span>
 
-<span class="sd">        limited_memory_qning: int, default=20</span>
+<span class="sd">    limited_memory_qning: int, default=20</span>
 <span class="sd">        memory parameter for the qning method</span>
 
-<span class="sd">        fista_restart: int, default=50</span>
-<span class="sd">        restart strategy for fista        </span>
+<span class="sd">    fista_restart: int, default=50</span>
+<span class="sd">        restart strategy for fista      </span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;regressor&quot;</span>
