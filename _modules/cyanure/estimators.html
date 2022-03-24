@@ -156,48 +156,7 @@
 <span class="sd">        fit_intercept: boolean, default=&#39;False&#39;</span>
 <span class="sd">            learns an unregularized intercept b  (or several intercepts for</span>
 <span class="sd">            multivariate problems)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
-        <span class="k">if</span> <span class="n">loss</span> <span class="o">==</span> <span class="s1">&#39;squared_hinge&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="s1">&#39;sqhinge&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">penalty</span> <span class="o">=</span> <span class="n">penalty</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fit_intercept</span> <span class="o">=</span> <span class="n">fit_intercept</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">dual</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="o">=</span> <span class="n">solver</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_1</span> <span class="o">=</span> <span class="n">lambda_1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_2</span> <span class="o">=</span> <span class="n">lambda_2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_3</span> <span class="o">=</span> <span class="n">lambda_3</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">limited_memory_qning</span> <span class="o">=</span> <span class="n">limited_memory_qning</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fista_restart</span> <span class="o">=</span> <span class="n">fista_restart</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">warm_start</span> <span class="o">=</span> <span class="n">warm_start</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">multi_class</span> <span class="o">=</span> <span class="n">multi_class</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">duality_gap_interval</span> <span class="o">=</span> <span class="n">duality_gap_interval</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_threads</span> <span class="o">=</span> <span class="n">n_threads</span>
-
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        The fitting function (the one that does the job)</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-
-<span class="sd">        X : numpy array, or scipy sparse CSR matrix</span>
-<span class="sd">            input n X p numpy matrix; the samples are on the rows</span>
-
-<span class="sd">        y : y, numpy array.</span>
-<span class="sd">            - vector of size n with real values for regression</span>
-<span class="sd">            - vector of size n with {-1,+1} y for binary classification,</span>
-<span class="sd">              which will be automatically converted if y in {0,1} are</span>
-<span class="sd">              provided</span>
-<span class="sd">            - matrix of size n X k for multivariate regression</span>
-<span class="sd">            - vector of size n with entries in {0,1,k-1} for classification</span>
-<span class="sd">              with k classes</span>
-
+<span class="sd">      </span>
 <span class="sd">        lambda_1: float, default=0</span>
 <span class="sd">            first regularization parameter</span>
 
@@ -256,18 +215,56 @@
 <span class="sd">            binary_problem or multivariate problems</span>
 
 <span class="sd">         limited_memory_qning: int, default=20</span>
-<span class="sd">            memory paramter for the qning method</span>
+<span class="sd">            memory parameter for the qning method</span>
 
 <span class="sd">         fista_restart: int, default=50</span>
 <span class="sd">            restart strategy for fista</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
+        <span class="k">if</span> <span class="n">loss</span> <span class="o">==</span> <span class="s1">&#39;squared_hinge&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="s1">&#39;sqhinge&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">penalty</span> <span class="o">=</span> <span class="n">penalty</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_intercept</span> <span class="o">=</span> <span class="n">fit_intercept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">dual</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="o">=</span> <span class="n">solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_1</span> <span class="o">=</span> <span class="n">lambda_1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_2</span> <span class="o">=</span> <span class="n">lambda_2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_3</span> <span class="o">=</span> <span class="n">lambda_3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limited_memory_qning</span> <span class="o">=</span> <span class="n">limited_memory_qning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fista_restart</span> <span class="o">=</span> <span class="n">fista_restart</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warm_start</span> <span class="o">=</span> <span class="n">warm_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multi_class</span> <span class="o">=</span> <span class="n">multi_class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duality_gap_interval</span> <span class="o">=</span> <span class="n">duality_gap_interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_threads</span> <span class="o">=</span> <span class="n">n_threads</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The fitting function (the one that does the job)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        X : numpy array, or scipy sparse CSR matrix</span>
+<span class="sd">            input n X p numpy matrix; the samples are on the rows</span>
+
+<span class="sd">        y : y, numpy array.</span>
+<span class="sd">            - vector of size n with real values for regression</span>
+<span class="sd">            - vector of size n with {-1,+1} y for binary classification,</span>
+<span class="sd">              which will be automatically converted if y in {0,1} are</span>
+<span class="sd">              provided</span>
+<span class="sd">            - matrix of size n X k for multivariate regression</span>
+<span class="sd">            - vector of size n with entries in {0,1,k-1} for classification</span>
+<span class="sd">              with k classes</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 
-<span class="sd">        test returns a numpy array carrying information about the optimization</span>
-<span class="sd">        process (number of iterations, objective function values, duality gap)</span>
-<span class="sd">        will be documented in the future if people ask me,</span>
+<span class="sd">        Returns the instance</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -351,7 +348,6 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">optimization_info_</span><span class="p">[</span><span class="n">class_index</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">class_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optimization_info_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
 
-        <span class="c1"># TODO Vérifier avec Julien</span>
         <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_iter_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The max_iter was reached which means the coef_ did not converge&quot;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
@@ -499,7 +495,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
 
-<span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">ERM</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ClassifierAbstraction</span><span class="p">(</span><span class="n">ERM</span><span class="p">):</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
@@ -519,11 +515,91 @@
 
 <span class="sd">        - &#39;square&#39; =&gt;  :math:`L(y,z) = \\frac{1}{2} ( y-z)^2`</span>
 
-<span class="sd">    penalty: string, default=&#39;l2&#39;</span>
-<span class="sd">        same as for the class BinaryClassifier</span>
+<span class="sd">    penalty: string, default=&#39;none&#39;</span>
+<span class="sd">        Regularization function psi. Possible choices are</span>
+
+<span class="sd">        For binary_problem problems</span>
+<span class="sd">        - &#39;none&#39; =&gt; psi(w) = 0</span>
+<span class="sd">        - &#39;l2&#39; =&gt;  psi{w) = (lambda_1/2) ||w||_2^2</span>
+<span class="sd">        - &#39;l1&#39; =&gt;  psi{w) = lambda_1 ||w||_1</span>
+<span class="sd">        - &#39;elasticnet&#39; =&gt;  psi{w) = lambda_1 ||w||_1 + (lambda_2/2)||w||_2^2</span>
+<span class="sd">        - &#39;fused-lasso&#39; =&gt; psi(w) = lambda_3 sum_{i=2}^p |w[i]-w[i-1]|</span>
+<span class="sd">                                    + lambda_1||w||_1 + (lambda_2/2)||w||_2^2</span>
+<span class="sd">        - &#39;l1-ball&#39;     =&gt; encodes the constraint ||w||_1 &lt;= lambda_1</span>
+<span class="sd">        - &#39;l2-ball&#39;     =&gt; encodes the constraint ||w||_2 &lt;= lambda_1</span>
+
+<span class="sd">        For multivariate problems, the previous penalties operate on each</span>
+<span class="sd">        individual (e.g., class) predictor.</span>
+<span class="sd">        In addition, multitask-group Lasso penalties are provided for</span>
+<span class="sd">        multivariate problems (w is then a matrix)</span>
+<span class="sd">        - &#39;l1l2&#39; or &#39;l1linf&#39;, see Latex documentation</span>
 
 <span class="sd">    fit_intercept: boolean, default=&#39;False&#39;</span>
-<span class="sd">        learns an unregularized intercept b</span>
+<span class="sd">        learns an unregularized intercept b  (or several intercepts for</span>
+<span class="sd">        multivariate problems)</span>
+<span class="sd">    </span>
+<span class="sd">    lambda_1: float, default=0</span>
+<span class="sd">        first regularization parameter</span>
+
+<span class="sd">    lambda_2: float, default=0</span>
+<span class="sd">        second regularization parameter, if needed</span>
+
+<span class="sd">    lambda_3: float, default=0</span>
+<span class="sd">        third regularization parameter, if needed</span>
+
+<span class="sd">    solver: string, default=&#39;auto&#39;</span>
+<span class="sd">        Optimization solver. Possible choices are</span>
+<span class="sd">        - &#39;ista&#39;</span>
+<span class="sd">        - &#39;fista&#39;</span>
+<span class="sd">        - &#39;catalyst-ista&#39;</span>
+<span class="sd">        - &#39;qning-ista&#39;  (proximal quasi-Newton method)</span>
+<span class="sd">        - &#39;svrg&#39;</span>
+<span class="sd">        - &#39;catalyst-svrg&#39; (accelerated SVRG with Catalyst)</span>
+<span class="sd">        - &#39;qning-svrg&#39;  (quasi-Newton SVRG)</span>
+<span class="sd">        - &#39;acc-svrg&#39;    (SVRG with direct acceleration)</span>
+<span class="sd">        - &#39;miso&#39;</span>
+<span class="sd">        - &#39;catalyst-miso&#39; (accelerated MISO with Catalyst)</span>
+<span class="sd">        - &#39;qning-miso&#39;  (quasi-Newton MISO)</span>
+<span class="sd">        - &#39;auto&#39;</span>
+<span class="sd">        see the Latex documentation for more details.</span>
+<span class="sd">        If you are unsure, use &#39;auto&#39;</span>
+
+<span class="sd">        tol: float, default=&#39;1e-3&#39;</span>
+<span class="sd">        Tolerance parameter. For almost all combinations of loss and</span>
+<span class="sd">        penalty functions, this parameter is based on a duality gap.</span>
+<span class="sd">        Assuming the (non-negative) objective function is &quot;f&quot; and its</span>
+<span class="sd">        optimal value is &quot;f^*&quot;, the algorithm stops with the guarantee</span>
+
+<span class="sd">        f(x_t) - f^*  &lt;=  tol f(x_t)</span>
+
+<span class="sd">        max_iter: int, default=500</span>
+<span class="sd">        Maximum number of iteration of the algorithm in terms of passes</span>
+<span class="sd">        over the data</span>
+
+<span class="sd">        duality_gap_interval: int, default=10</span>
+<span class="sd">        Frequency of duality-gap computation</span>
+
+<span class="sd">        verbose: boolean, default=True</span>
+<span class="sd">        Display information or not</span>
+
+<span class="sd">        n_threads: int, default=-1</span>
+<span class="sd">        maximum number of cores the method may use (-1 = all cores).</span>
+<span class="sd">        Note that more cores is not always better.</span>
+
+<span class="sd">        seed: int, default=0</span>
+<span class="sd">        random seed</span>
+
+<span class="sd">        restart: boolean, default=False</span>
+<span class="sd">        use a restart strategy (useful for computing regularization path)</span>
+
+<span class="sd">        binary_problem: boolean, default=True</span>
+<span class="sd">        binary_problem or multivariate problems</span>
+
+<span class="sd">        limited_memory_qning: int, default=20</span>
+<span class="sd">        memory parameter for the qning method</span>
+
+<span class="sd">        fista_restart: int, default=50</span>
+<span class="sd">        restart strategy for fista        </span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;regressor&quot;</span>
@@ -546,8 +622,22 @@
 
 <div class="viewcode-block" id="Regression.fit"><a class="viewcode-back" href="../../python.html#cyanure.estimators.Regression.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        The fitting function is the same as for the class BinaryClassifier,</span>
-<span class="sd">        except that we do not necessarily expect binary labels in y.</span>
+<span class="sd">        The fitting function (the one that does the job)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        X : numpy array, or scipy sparse CSR matrix</span>
+<span class="sd">            input n X p numpy matrix; the samples are on the rows</span>
+
+<span class="sd">        y : y, numpy array.</span>
+<span class="sd">            - vector of size n with real values for regression</span>
+<span class="sd">            - matrix of size n X k for multivariate regression</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        Returns the instance</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">check_input_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 
@@ -577,7 +667,7 @@
 
 
 
-<div class="viewcode-block" id="MultiClassifier"><a class="viewcode-back" href="../../python.html#cyanure.estimators.MultiClassifier">[docs]</a><span class="k">class</span> <span class="nc">MultiClassifier</span><span class="p">(</span><span class="n">Classifier</span><span class="p">):</span>
+<div class="viewcode-block" id="Classifier"><a class="viewcode-back" href="../../python.html#cyanure.estimators.Classifier">[docs]</a><span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">ClassifierAbstraction</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The multi-class classification class. The goal is to minimize the</span>
 <span class="sd">    following objective</span>
 
@@ -654,7 +744,7 @@
                          <span class="n">lambda_1</span><span class="o">=</span><span class="n">lambda_1</span><span class="p">,</span> <span class="n">lambda_2</span><span class="o">=</span><span class="n">lambda_2</span><span class="p">,</span> <span class="n">lambda_3</span><span class="o">=</span><span class="n">lambda_3</span><span class="p">,</span> <span class="n">duality_gap_interval</span><span class="o">=</span><span class="n">duality_gap_interval</span><span class="p">,</span>
                          <span class="n">n_threads</span><span class="o">=</span><span class="n">n_threads</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span> <span class="n">multi_class</span><span class="p">,</span> <span class="n">dual</span><span class="o">=</span><span class="n">dual</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MultiClassifier.fit"><a class="viewcode-back" href="../../python.html#cyanure.estimators.MultiClassifier.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Classifier.fit"><a class="viewcode-back" href="../../python.html#cyanure.estimators.Classifier.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Same as BinaryClassifier, but y should be a vector a n-dimensional</span>
 <span class="sd">        vector of integers</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -697,10 +787,16 @@
                 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">min_value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_binary_problem</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-            <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MultiClassifier.predict"><a class="viewcode-back" href="../../python.html#cyanure.estimators.MultiClassifier.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_intercept</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Classifier.predict"><a class="viewcode-back" href="../../python.html#cyanure.estimators.Classifier.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Predicts the class label&quot;&quot;&quot;</span>
         <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -727,7 +823,7 @@
 
         <span class="k">return</span> <span class="n">output</span></div>
 
-<div class="viewcode-block" id="MultiClassifier.score"><a class="viewcode-back" href="../../python.html#cyanure.estimators.MultiClassifier.score">[docs]</a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="Classifier.score"><a class="viewcode-back" href="../../python.html#cyanure.estimators.Classifier.score">[docs]</a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Gives a classification score on new test data&quot;&quot;&quot;</span>
         <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -768,112 +864,7 @@
         <span class="k">return</span> <span class="n">softmax</span><span class="p">(</span><span class="n">decision</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<span class="k">class</span> <span class="nc">SKLearnClassifier</span><span class="p">(</span><span class="n">ERM</span><span class="p">):</span>
-    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">penalty</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                 <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lambda_1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lambda_2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lambda_3</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">duality_gap_interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limited_memory_qning</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-                 <span class="n">fista_restart</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_threads</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">dual</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="n">penalty</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="n">fit_intercept</span><span class="p">,</span>
-            <span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-            <span class="n">lambda_1</span><span class="o">=</span><span class="n">lambda_1</span><span class="p">,</span> <span class="n">lambda_2</span><span class="o">=</span><span class="n">lambda_2</span><span class="p">,</span> <span class="n">lambda_3</span><span class="o">=</span><span class="n">lambda_3</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span> <span class="n">multi_class</span><span class="p">,</span>
-            <span class="n">duality_gap_interval</span><span class="o">=</span><span class="n">duality_gap_interval</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">max_iter</span><span class="p">,</span> <span class="n">limited_memory_qning</span><span class="o">=</span><span class="n">limited_memory_qning</span><span class="p">,</span>
-            <span class="n">fista_restart</span><span class="o">=</span><span class="n">fista_restart</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">warm_start</span><span class="p">,</span> <span class="n">n_threads</span><span class="o">=</span><span class="n">n_threads</span><span class="p">,</span> <span class="n">dual</span><span class="o">=</span><span class="n">dual</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compatible with both binary and multi-classification. Here the parameter C replaces lambda_1,</span>
-<span class="sd">        and max_iter replaces max_iter.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">check_input_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">le_parameter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">le_</span> <span class="o">=</span> <span class="n">le_parameter</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">le_</span> <span class="o">=</span> <span class="n">le</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">nb_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">nb_classes</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_binary_problem</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-                <span class="n">y</span><span class="p">[</span><span class="n">neg</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-                <span class="n">y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">neg</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">min_value</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">min_value</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">min_value</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_binary_problem</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_intercept</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="mf">0.</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_features_in_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="k">def</span> <span class="nf">decision_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">X</span> <span class="o">=</span> <span class="n">check_input_inference</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">scores</span> <span class="o">=</span> <span class="n">safe_sparse_dot</span><span class="p">(</span>
-            <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span>
-        <span class="k">return</span> <span class="n">scores</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="k">if</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">scores</span>
-
-    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">X</span> <span class="o">=</span> <span class="n">check_input_inference</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">indices</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-        <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">output</span>
-
-    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">X</span> <span class="o">=</span> <span class="n">check_input_inference</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">decision</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">decision</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="c1"># Workaround for binary_problem=&quot;multinomial&quot; and binary outcomes</span>
-            <span class="c1"># which requires softmax prediction with only a 1D decision.</span>
-            <span class="n">decision_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="o">-</span><span class="n">decision</span><span class="p">,</span> <span class="n">decision</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">decision_2d</span> <span class="o">=</span> <span class="n">decision</span>
-        <span class="k">return</span> <span class="n">softmax</span><span class="p">(</span><span class="n">decision_2d</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
-
-
-<div class="viewcode-block" id="LinearSVC"><a class="viewcode-back" href="../../python.html#cyanure.estimators.LinearSVC">[docs]</a><span class="k">class</span> <span class="nc">LinearSVC</span><span class="p">(</span><span class="n">SKLearnClassifier</span><span class="p">):</span>
+<div class="viewcode-block" id="LinearSVC"><a class="viewcode-back" href="../../python.html#cyanure.estimators.LinearSVC">[docs]</a><span class="k">class</span> <span class="nc">LinearSVC</span><span class="p">(</span><span class="n">Classifier</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A compatibility class for scikit-learn user, but only for square hinge loss</span>
 <span class="sd">    It is perfectly equivalent to the BinaryClassifier class, but the</span>
@@ -913,7 +904,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="LogisticRegression"><a class="viewcode-back" href="../../python.html#cyanure.estimators.LogisticRegression">[docs]</a><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">SKLearnClassifier</span><span class="p">):</span>
+<div class="viewcode-block" id="LogisticRegression"><a class="viewcode-back" href="../../python.html#cyanure.estimators.LogisticRegression">[docs]</a><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Classifier</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A compatibility class for scikit-learn user, but only for square hinge loss</span>
 <span class="sd">    It is perfectly equivalent to the BinaryClassifier class, but the</span>
@@ -1036,7 +1027,7 @@
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
-<div class="viewcode-block" id="L1Logistic"><a class="viewcode-back" href="../../python.html#cyanure.estimators.L1Logistic">[docs]</a><span class="k">class</span> <span class="nc">L1Logistic</span><span class="p">(</span><span class="n">MultiClassifier</span><span class="p">):</span>
+<div class="viewcode-block" id="L1Logistic"><a class="viewcode-back" href="../../python.html#cyanure.estimators.L1Logistic">[docs]</a><span class="k">class</span> <span class="nc">L1Logistic</span><span class="p">(</span><span class="n">Classifier</span><span class="p">):</span>
 
     <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>
 
@@ -1070,7 +1061,7 @@
             <span class="c1"># no active set</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">le_parameter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">le_</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">aux</span> <span class="o">=</span> <span class="n">MultiClassifier</span><span class="p">(</span>
+            <span class="n">aux</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">(</span>
                 <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_intercept</span><span class="p">)</span>
 
             <span class="n">fit_large_feature_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aux</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
