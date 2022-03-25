@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python API &mdash; Cyanure 0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -84,9 +83,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-cyanure.estimators">
+  <div class="section" id="module-cyanure.estimators">
 <span id="python-api"></span><h1>Python API<a class="headerlink" href="#module-cyanure.estimators" title="Permalink to this headline"></a></h1>
-<section id="the-regression-class">
+<div class="section" id="the-regression-class">
 <h2>The Regression Class<a class="headerlink" href="#the-regression-class" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cyanure.estimators.Regression">
@@ -98,45 +97,35 @@ be real values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>loss</strong><span class="classifier">string, default=’square’</span></dt><dd><p>Loss function to be used. Possible choices are
-- ‘square’ =&gt;  L(y,z) = 0.5 ( y-z)^2
-- ‘logistic’ =&gt; L(y,z) = log(1 + e^{-y z} )
-- ‘sqhinge’ or ‘squared_hinge’ =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2
-- ‘safe-logistic’ =&gt; L(y,z) = e^{ yz - 1 } - y z  if yz &lt;= 1</p>
-<blockquote>
-<div><p>and 0 otherwise</p>
-</div></blockquote>
+<dt><strong>loss</strong><span class="classifier">string, default=’square’</span></dt><dd><p>Loss function to be used. Possible choices are:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>‘multiclass-logistic’ =&gt; multinomial logistic (see Latex</dt><dd><p>documentation).</p>
-</dd>
-</dl>
-</li>
+<li><p>‘square’ =&gt;  <span class="math notranslate nohighlight">\(L(y,z) = \frac{1}{2}( y-z)^2\)</span></p></li>
+<li><p>‘logistic’ =&gt; <span class="math notranslate nohighlight">\(L(y,z) = log(1 + e^{-y z} )\)</span></p></li>
+<li><p>‘sqhinge’ or ‘squared_hinge’ =&gt; <span class="math notranslate nohighlight">\(L(y,z) = \frac{1}{2} max( 0, 1- y z)^2\)</span></p></li>
+<li><p>‘safe-logistic’ =&gt; <span class="math notranslate nohighlight">\(L(y,z) = e^{ yz - 1 } - y z\)</span> if <span class="math notranslate nohighlight">\(yz &lt;= 1\)</span> and <span class="math notranslate nohighlight">\(0\)</span> otherwise</p></li>
+<li><p>‘multiclass-logistic’  =&gt; multinomial logistic (see Latex documentation).</p></li>
 </ul>
 <p>Note that for binary classification, we assume the y to be of
 the form {-1,+1}</p>
 </dd>
 <dt><strong>penalty: string, default=’none’</strong></dt><dd><p>Regularization function psi. Possible choices are</p>
-<p>For binary_problem problems
-- ‘none’ =&gt; psi(w) = 0
-- ‘l2’ =&gt;  psi{w) = (lambda_1/2) ||w||_2^2
-- ‘l1’ =&gt;  psi{w) = lambda_1 ||w||_1
-- ‘elasticnet’ =&gt;  psi{w) = lambda_1 ||w||_1 + (lambda_2/2)||w||_2^2
-- ‘fused-lasso’ =&gt; psi(w) = lambda_3 sum_{i=2}^p <a href="#id1"><span class="problematic" id="id2">|w[i]-w[i-1]|</span></a></p>
-<blockquote>
-<div><ul class="simple">
-<li><p>lambda_1||w||_1 + (lambda_2/2)||w||_2^2</p></li>
-</ul>
-</div></blockquote>
+<p>For binary_problem problems:</p>
 <ul class="simple">
-<li><p>‘l1-ball’     =&gt; encodes the constraint ||w||_1 &lt;= lambda_1</p></li>
-<li><p>‘l2-ball’     =&gt; encodes the constraint ||w||_2 &lt;= lambda_1</p></li>
+<li><p>‘none’ =&gt; <span class="math notranslate nohighlight">\(psi(w) = 0\)</span></p></li>
+<li><p>‘l2’ =&gt;  <span class="math notranslate nohighlight">\(psi(w) = \frac{\lambda}{2} ||w||_2^2\)</span></p></li>
+<li><p>‘l1’ =&gt;  <span class="math notranslate nohighlight">\(psi(w) = \lambda ||w||_1\)</span></p></li>
+<li><p>‘elasticnet’ =&gt;  <span class="math notranslate nohighlight">\(psi(w) = \lambda_1 ||w||_1 + \frac{\lambda_2}{2}||w||_2^2\)</span></p></li>
+<li><p>‘fused-lasso’ =&gt; <span class="math notranslate nohighlight">\(psi(w) = \lambda_3 \sum_{i=2}^p |w[i]-w[i-1]| + \lambda_1||w||_1 + \frac{\lambda_2}{2}||w||_2^2\)</span></p></li>
+<li><p>‘l1-ball’     =&gt; encodes the constraint <span class="math notranslate nohighlight">\(||w||_1 &lt;= \lambda\)</span></p></li>
+<li><p>‘l2-ball’     =&gt; encodes the constraint <span class="math notranslate nohighlight">\(||w||_2 &lt;= \lambda\)</span></p></li>
 </ul>
 <p>For multivariate problems, the previous penalties operate on each
 individual (e.g., class) predictor.
 In addition, multitask-group Lasso penalties are provided for
-multivariate problems (w is then a matrix)
-- ‘l1l2’ or ‘l1linf’, see Latex documentation</p>
+multivariate problems (w is then a matrix)</p>
+<ul class="simple">
+<li><p>‘l1l2’ or ‘l1linf’, see Latex documentation</p></li>
+</ul>
 </dd>
 <dt><strong>fit_intercept: boolean, default=’False’</strong></dt><dd><p>learns an unregularized intercept b  (or several intercepts for
 multivariate problems)</p>
@@ -147,27 +136,29 @@ multivariate problems)</p>
 </dd>
 <dt><strong>lambda_3: float, default=0</strong></dt><dd><p>third regularization parameter, if needed</p>
 </dd>
-<dt><strong>solver: string, default=’auto’</strong></dt><dd><p>Optimization solver. Possible choices are
-- ‘ista’
-- ‘fista’
-- ‘catalyst-ista’
-- ‘qning-ista’  (proximal quasi-Newton method)
-- ‘svrg’
-- ‘catalyst-svrg’ (accelerated SVRG with Catalyst)
-- ‘qning-svrg’  (quasi-Newton SVRG)
-- ‘acc-svrg’    (SVRG with direct acceleration)
-- ‘miso’
-- ‘catalyst-miso’ (accelerated MISO with Catalyst)
-- ‘qning-miso’  (quasi-Newton MISO)
-- ‘auto’
-see the Latex documentation for more details.
+<dt><strong>solver: string, default=’auto’</strong></dt><dd><p>Optimization solver. Possible choices are</p>
+<ul class="simple">
+<li><p>‘ista’</p></li>
+<li><p>‘fista’</p></li>
+<li><p>‘catalyst-ista’</p></li>
+<li><p>‘qning-ista’  (proximal quasi-Newton method)</p></li>
+<li><p>‘svrg’</p></li>
+<li><p>‘catalyst-svrg’ (accelerated SVRG with Catalyst)</p></li>
+<li><p>‘qning-svrg’  (quasi-Newton SVRG)</p></li>
+<li><p>‘acc-svrg’    (SVRG with direct acceleration)</p></li>
+<li><p>‘miso’</p></li>
+<li><p>‘catalyst-miso’ (accelerated MISO with Catalyst)</p></li>
+<li><p>‘qning-miso’  (quasi-Newton MISO)</p></li>
+<li><p>‘auto’</p></li>
+</ul>
+<p>see the Latex documentation for more details.
 If you are unsure, use ‘auto’</p>
 </dd>
 <dt><strong>tol: float, default=’1e-3’</strong></dt><dd><p>Tolerance parameter. For almost all combinations of loss and
 penalty functions, this parameter is based on a duality gap.
 Assuming the (non-negative) objective function is “f” and its
 optimal value is “f^*”, the algorithm stops with the guarantee</p>
-<p>f(x_t) - f^*  &lt;=  tol f(x_t)</p>
+<p><span class="math notranslate nohighlight">\(f(x_t) - f^*  &lt;=  tol f(x_t)\)</span></p>
 </dd>
 <dt><strong>max_iter: int, default=500</strong></dt><dd><p>Maximum number of iteration of the algorithm in terms of passes
 over the data</p>
@@ -326,8 +317,8 @@ method (if any) will not work until you call densify.</p>
 
 </dd></dl>
 
-</section>
-<section id="the-classifier-class">
+</div>
+<div class="section" id="the-classifier-class">
 <h2>The Classifier Class<a class="headerlink" href="#the-classifier-class" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cyanure.estimators.Classifier">
@@ -521,8 +512,8 @@ method (if any) will not work until you call densify.</p>
 
 </dd></dl>
 
-</section>
-<section id="pre-configured-classes">
+</div>
+<div class="section" id="pre-configured-classes">
 <h2>Pre-configured classes<a class="headerlink" href="#pre-configured-classes" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cyanure.estimators.LinearSVC">
@@ -1073,8 +1064,8 @@ method (if any) will not work until you call densify.</p>
 
 </dd></dl>
 
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

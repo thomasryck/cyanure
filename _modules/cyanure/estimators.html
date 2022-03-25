@@ -104,7 +104,8 @@
 
 
 <span class="k">class</span> <span class="nc">ERM</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;The generic class for empirical risk minimization problems.</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The generic class for empirical risk minimization problems.</span>
 <span class="sd">    For univariates problems, minimizes</span>
 
 <span class="sd">        min_{w,b} (1/n) sum_{i=1}^n L( y_i, &lt;w, x_i&gt; + b)   + psi(w)</span>
@@ -124,14 +125,19 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        loss : string, default=&#39;square&#39;</span>
-<span class="sd">            Loss function to be used. Possible choices are</span>
-<span class="sd">            - &#39;square&#39; =&gt;  L(y,z) = 0.5 ( y-z)^2</span>
-<span class="sd">            - &#39;logistic&#39; =&gt; L(y,z) = log(1 + e^{-y z} )</span>
-<span class="sd">            - &#39;sqhinge&#39; or &#39;squared_hinge&#39; =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2</span>
-<span class="sd">            - &#39;safe-logistic&#39; =&gt; L(y,z) = e^{ yz - 1 } - y z  if yz &lt;= 1</span>
-<span class="sd">                                 and 0 otherwise</span>
-<span class="sd">            - &#39;multiclass-logistic&#39; =&gt; multinomial logistic (see Latex</span>
-<span class="sd">                                       documentation).</span>
+<span class="sd">            Loss function to be used. Possible choices are:</span>
+
+<span class="sd">            - &#39;square&#39; </span>
+<span class="sd">              =&gt;  L(y,z) = \\frac{1}{2}( y-z)^2</span>
+<span class="sd">            - &#39;logistic&#39; </span>
+<span class="sd">              =&gt; L(y,z) = log(1 + e^{-y z} )</span>
+<span class="sd">            - &#39;sqhinge&#39; or &#39;squared_hinge&#39; </span>
+<span class="sd">              =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2</span>
+<span class="sd">            - &#39;safe-logistic&#39; </span>
+<span class="sd">              =&gt; L(y,z) = e^{ yz - 1 } - y z if yz &lt;= 1 and 0 otherwise</span>
+<span class="sd">            - &#39;multiclass-logistic&#39; </span>
+<span class="sd">              =&gt; multinomial logistic (see Latex documentation).</span>
+
 <span class="sd">            Note that for binary classification, we assume the y to be of</span>
 <span class="sd">            the form {-1,+1}</span>
 
@@ -144,7 +150,7 @@
 <span class="sd">            - &#39;l1&#39; =&gt;  psi{w) = lambda_1 ||w||_1</span>
 <span class="sd">            - &#39;elasticnet&#39; =&gt;  psi{w) = lambda_1 ||w||_1 + (lambda_2/2)||w||_2^2</span>
 <span class="sd">            - &#39;fused-lasso&#39; =&gt; psi(w) = lambda_3 sum_{i=2}^p |w[i]-w[i-1]|</span>
-<span class="sd">                                      + lambda_1||w||_1 + (lambda_2/2)||w||_2^2</span>
+<span class="sd">              + lambda_1||w||_1 + (lambda_2/2)||w||_2^2</span>
 <span class="sd">            - &#39;l1-ball&#39;     =&gt; encodes the constraint ||w||_1 &lt;= lambda_1</span>
 <span class="sd">            - &#39;l2-ball&#39;     =&gt; encodes the constraint ||w||_2 &lt;= lambda_1</span>
 
@@ -518,34 +524,35 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    loss : string, default=&#39;square&#39;</span>
-<span class="sd">        Loss function to be used. Possible choices are</span>
-<span class="sd">        - &#39;square&#39; =&gt;  L(y,z) = 0.5 ( y-z)^2</span>
-<span class="sd">        - &#39;logistic&#39; =&gt; L(y,z) = log(1 + e^{-y z} )</span>
-<span class="sd">        - &#39;sqhinge&#39; or &#39;squared_hinge&#39; =&gt; L(y,z) = 0.5 max( 0, 1- y z)^2</span>
-<span class="sd">        - &#39;safe-logistic&#39; =&gt; L(y,z) = e^{ yz - 1 } - y z  if yz &lt;= 1</span>
-<span class="sd">                                and 0 otherwise</span>
-<span class="sd">        - &#39;multiclass-logistic&#39; =&gt; multinomial logistic (see Latex</span>
-<span class="sd">                                    documentation).</span>
+<span class="sd">        Loss function to be used. Possible choices are:</span>
+
+<span class="sd">        * &#39;square&#39; =&gt;  :math:`L(y,z) = \\frac{1}{2}( y-z)^2`</span>
+<span class="sd">        * &#39;logistic&#39; =&gt; :math:`L(y,z) = log(1 + e^{-y z} )`</span>
+<span class="sd">        * &#39;sqhinge&#39; or &#39;squared_hinge&#39; =&gt; :math:`L(y,z) = \\frac{1}{2} max( 0, 1- y z)^2`</span>
+<span class="sd">        * &#39;safe-logistic&#39; =&gt; :math:`L(y,z) = e^{ yz - 1 } - y z` if :math:`yz &lt;= 1` and :math:`0` otherwise</span>
+<span class="sd">        * &#39;multiclass-logistic&#39;  =&gt; multinomial logistic (see Latex documentation).</span>
+
 <span class="sd">        Note that for binary classification, we assume the y to be of</span>
 <span class="sd">        the form {-1,+1}</span>
 
 <span class="sd">    penalty: string, default=&#39;none&#39;</span>
 <span class="sd">        Regularization function psi. Possible choices are</span>
 
-<span class="sd">        For binary_problem problems</span>
-<span class="sd">        - &#39;none&#39; =&gt; psi(w) = 0</span>
-<span class="sd">        - &#39;l2&#39; =&gt;  psi{w) = (lambda_1/2) ||w||_2^2</span>
-<span class="sd">        - &#39;l1&#39; =&gt;  psi{w) = lambda_1 ||w||_1</span>
-<span class="sd">        - &#39;elasticnet&#39; =&gt;  psi{w) = lambda_1 ||w||_1 + (lambda_2/2)||w||_2^2</span>
-<span class="sd">        - &#39;fused-lasso&#39; =&gt; psi(w) = lambda_3 sum_{i=2}^p |w[i]-w[i-1]|</span>
-<span class="sd">                                    + lambda_1||w||_1 + (lambda_2/2)||w||_2^2</span>
-<span class="sd">        - &#39;l1-ball&#39;     =&gt; encodes the constraint ||w||_1 &lt;= lambda_1</span>
-<span class="sd">        - &#39;l2-ball&#39;     =&gt; encodes the constraint ||w||_2 &lt;= lambda_1</span>
+<span class="sd">        For binary_problem problems:</span>
+
+<span class="sd">        - &#39;none&#39; =&gt; :math:`psi(w) = 0`</span>
+<span class="sd">        - &#39;l2&#39; =&gt;  :math:`psi(w) = \\frac{\\lambda}{2} ||w||_2^2`</span>
+<span class="sd">        - &#39;l1&#39; =&gt;  :math:`psi(w) = \\lambda ||w||_1`</span>
+<span class="sd">        - &#39;elasticnet&#39; =&gt;  :math:`psi(w) = \\lambda_1 ||w||_1 + \\frac{\\lambda_2}{2}||w||_2^2`</span>
+<span class="sd">        - &#39;fused-lasso&#39; =&gt; :math:`psi(w) = \\lambda_3 \\sum_{i=2}^p |w[i]-w[i-1]| + \\lambda_1||w||_1 + \\frac{\\lambda_2}{2}||w||_2^2`</span>
+<span class="sd">        - &#39;l1-ball&#39;     =&gt; encodes the constraint :math:`||w||_1 &lt;= \\lambda`</span>
+<span class="sd">        - &#39;l2-ball&#39;     =&gt; encodes the constraint :math:`||w||_2 &lt;= \\lambda`</span>
 
 <span class="sd">        For multivariate problems, the previous penalties operate on each</span>
 <span class="sd">        individual (e.g., class) predictor.</span>
 <span class="sd">        In addition, multitask-group Lasso penalties are provided for</span>
 <span class="sd">        multivariate problems (w is then a matrix)</span>
+<span class="sd">        </span>
 <span class="sd">        - &#39;l1l2&#39; or &#39;l1linf&#39;, see Latex documentation</span>
 
 <span class="sd">    fit_intercept: boolean, default=&#39;False&#39;</span>
@@ -563,6 +570,7 @@
 
 <span class="sd">    solver: string, default=&#39;auto&#39;</span>
 <span class="sd">        Optimization solver. Possible choices are</span>
+
 <span class="sd">        - &#39;ista&#39;</span>
 <span class="sd">        - &#39;fista&#39;</span>
 <span class="sd">        - &#39;catalyst-ista&#39;</span>
@@ -575,6 +583,7 @@
 <span class="sd">        - &#39;catalyst-miso&#39; (accelerated MISO with Catalyst)</span>
 <span class="sd">        - &#39;qning-miso&#39;  (quasi-Newton MISO)</span>
 <span class="sd">        - &#39;auto&#39;</span>
+
 <span class="sd">        see the Latex documentation for more details.</span>
 <span class="sd">        If you are unsure, use &#39;auto&#39;</span>
 
@@ -584,7 +593,7 @@
 <span class="sd">        Assuming the (non-negative) objective function is &quot;f&quot; and its</span>
 <span class="sd">        optimal value is &quot;f^*&quot;, the algorithm stops with the guarantee</span>
 
-<span class="sd">        f(x_t) - f^*  &lt;=  tol f(x_t)</span>
+<span class="sd">        :math:`f(x_t) - f^*  &lt;=  tol f(x_t)`</span>
 
 <span class="sd">    max_iter: int, default=500</span>
 <span class="sd">        Maximum number of iteration of the algorithm in terms of passes</span>

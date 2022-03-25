@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tutorials &mdash; Cyanure 0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -83,13 +82,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="tutorials">
+  <div class="section" id="tutorials">
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Many of the datasets I used are available <a class="reference external" href="http://pascal.inrialpes.fr/data2/mairal/data/">here</a>.  I am waiting for the authorization from Criteo before putting their dataset online as well in .npz format.</p>
 </div>
-<section id="examples-for-binary-classification">
+<div class="section" id="examples-for-binary-classification">
 <h2>Examples for binary classification<a class="headerlink" href="#examples-for-binary-classification" title="Permalink to this headline"></a></h2>
 <p>The following code performs binary classification with <span class="math notranslate nohighlight">\(\ell_2\)</span>-regularized logistic regression, with no intercept, on the criteo dataset (21Gb, huge sparse matrix):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cyanure</span> <span class="k">as</span> <span class="nn">cyan</span>
@@ -182,8 +181,8 @@ laptop with a quad-core i7-8565U CPU (specifically a dell XPS 13 9380).:</p>
 <span class="n">Total</span> <span class="n">skipping</span> <span class="n">l</span><span class="o">-</span><span class="n">bfgs</span> <span class="n">steps</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 </div>
-</section>
-<section id="multiclass-classification">
+</div>
+<div class="section" id="multiclass-classification">
 <h2>Multiclass classification<a class="headerlink" href="#multiclass-classification" title="Permalink to this headline"></a></h2>
 <p>Let us now do something a bit more involved and perform multinomial logistic regression on the
 <em>ckn_mnist</em> dataset (10 classes, n=60000, p=2304, dense matrix), with multi-task group lasso regularization,
@@ -286,8 +285,8 @@ of learning l2-logistic regression classifiers on the same dataset, in a one-vs-
 </pre></div>
 </div>
 <p>Note that the toolbox also provides the classes LinearSVC and LogisticRegression that are near-compatible with scikit-learn’s API.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
