@@ -96,8 +96,8 @@ a documentation is provided in pdf in the following arXiv document</p>
 <h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline"></a></h2>
 <dl class="simple">
 <dt>Cyanure is build upon several goals and principles:</dt><dd><ul class="simple">
-<li><p><strong>Cyanure is memory efficient</strong>. If Cyanure accepts your dataset, it will
-never make a copy of it. Matrices can be provided in double or single
+<li><p><strong>Cyanure is memory efficient</strong>. In case of dense matrix, it will
+never make a copy of it except if you are not using floating type. Matrices can be provided in double or single
 precision. Sparse matrices (scipy/CSR format for Python, CSC for C++) can
 be provided with integers coded in 32 or 64-bits. When fitting an
 intercept, there is no need to add a column of 1’s and there is no matrix
@@ -121,46 +121,17 @@ Note that if you have chosen the solver ‘auto’, you are likely to use <a cla
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p>You can install Cyanure from its source on <a class="reference external" href="https://github.com/jmairal/cyanure">its github repository</a>.
-But we recommend to install it with Anaconda from the conda-forge channel, you can also find Cyanure on PyPI.</p>
-<ul>
-<li><p>If you want to use Github on Linux, simply clone the repository, and then</p>
+<p>The recommanded installation procedure is to use either conda or pip.</p>
+<p>The package available on conda and pip are shipped with OpenBLAS and OpenMP except for Windows which does not use OpenMP.
+For conda the package is available on conda forge.</p>
+<p>You can either install with:</p>
 <blockquote>
-<div><p>If you are using Anaconda and have the package mkl installed, simply type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>If instead your numpy relies on openblas, you should use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup_cyanure_openblas</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
-</div>
+<div><p><cite>conda install -c conda-forge cyanure</cite></p>
+<p>or</p>
+<p><cite>pip install cyanure</cite></p>
 </div></blockquote>
-</li>
-<li><p>If you prefer to use PyPI on Linux,</p>
-<blockquote>
-<div><p>Simply replace the two previous commands by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cyanure</span><span class="o">-</span><span class="n">mkl</span>
-</pre></div>
-</div>
-<p>or by the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cyanure</span><span class="o">-</span><span class="n">openblas</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>If you work on Mac, you need a C++ compiler, provided for instance with XCode, which is unlikely to support openmp. If your compiler supports it, follow the Linux instructions. Otherwise, use the “no_openmp” variants.</p>
-<blockquote>
-<div><p>if you download the sources on github,:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup_cyanure_mkl_no_openmp</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>    <span class="ow">or</span>     <span class="n">python</span> <span class="n">setup_cyanure_openblas_no_openmp</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>or if you use PyPI:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cyanure</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">openmp</span>    <span class="ow">or</span>       <span class="n">pip</span> <span class="n">install</span> <span class="n">cyanure</span><span class="o">-</span><span class="n">openblas</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">openmp</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ul>
+<p>You can also install Cyanure from the sources. However, the setup file is not mature enough to work with a variety of BLAS configuration (especially on Windows).</p>
+<p>On top of that, you can not use default compiler to compile on MacOS with OpenMP.</p>
 <a class="reference internal image-reference" href="_images/logo-inria-scientifique-couleur.jpg"><img alt="_images/logo-inria-scientifique-couleur.jpg" src="_images/logo-inria-scientifique-couleur.jpg" style="width: 35%;" /></a>
 <a class="reference internal image-reference" href="_images/erc-logo.gif"><img alt="_images/erc-logo.gif" src="_images/erc-logo.gif" style="width: 15%;" /></a>
 <a class="reference internal image-reference" href="_images/logo_miai.jpg"><img alt="_images/logo_miai.jpg" src="_images/logo_miai.jpg" style="width: 20%;" /></a>
