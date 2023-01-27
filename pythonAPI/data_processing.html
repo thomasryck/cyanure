@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Preprocessing functions &mdash; Cyanure 0.2 documentation</title>
+  <title>Preprocessing functions &mdash; Cyanure 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,16 +39,26 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome to Cyanure’s documentation!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html#installation">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pythonAPI.html">Python API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="estimators.html">Estimators</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocessing functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#preprocess-data">Preprocess data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#input-verification-functions">Input verification functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocess-data">Preprocess data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#input-verification-functions">Input verification functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_labels"><code class="docutils literal notranslate"><span class="pre">check_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_input_type"><code class="docutils literal notranslate"><span class="pre">check_input_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_positive_parameter"><code class="docutils literal notranslate"><span class="pre">check_positive_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_parameters"><code class="docutils literal notranslate"><span class="pre">check_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_input_fit"><code class="docutils literal notranslate"><span class="pre">check_input_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyanure.data_processing.check_input_inference"><code class="docutils literal notranslate"><span class="pre">check_input_inference()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -69,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="pythonAPI.html">Python API</a> &raquo;</li>
-      <li>Preprocessing functions</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="pythonAPI.html">Python API</a></li>
+      <li class="breadcrumb-item active">Preprocessing functions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/pythonAPI/data_processing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,15 +93,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <span class="target" id="module-cyanure.data_processing"></span><div class="section" id="preprocessing-functions">
-<h1>Preprocessing functions<a class="headerlink" href="#preprocessing-functions" title="Permalink to this headline"></a></h1>
+  <span class="target" id="module-cyanure.data_processing"></span><p>Contain the functions concerning the processing of data.</p>
+<div class="section" id="preprocessing-functions">
+<h1>Preprocessing functions<a class="headerlink" href="#preprocessing-functions" title="Permalink to this heading"></a></h1>
 <div class="section" id="preprocess-data">
-<h2>Preprocess data<a class="headerlink" href="#preprocess-data" title="Permalink to this headline"></a></h2>
+<h2>Preprocess data<a class="headerlink" href="#preprocess-data" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.preprocess">
 <span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.preprocess" title="Permalink to this definition"></a></dt>
-<dd><p>Perform in-place centering or normalization, either of columns or rows
-of the input matrix X</p>
+<dd><p>Preprocess features training data.</p>
+<p>Perform in-place centering or normalization, either of columns or rows
+of the input matrix X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -108,17 +122,17 @@ of the input matrix X</p>
 
 </div>
 <div class="section" id="input-verification-functions">
-<h2>Input verification functions<a class="headerlink" href="#input-verification-functions" title="Permalink to this headline"></a></h2>
+<h2>Input verification functions<a class="headerlink" href="#input-verification-functions" title="Permalink to this heading"></a></h2>
 <p><strong>These functions are not be necessary for any normal use of the library</strong></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.check_labels">
-<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_labels" title="Permalink to this definition"></a></dt>
-<dd><p>Verify the format of labels depending on the type of the estimator.
-Can convert labels in some cases.</p>
+<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_labels" title="Permalink to this definition"></a></dt>
+<dd><p>Verify the format of labels depending on the type of the estimator.</p>
+<p>Can convert labels in some cases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>y (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
+<dt><strong>labels (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
 </dd>
 <dt><strong>estimator (ERM):</strong></dt><dd><p>The estimator which will be fitted</p>
 </dd>
@@ -126,9 +140,9 @@ Can convert labels in some cases.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>y (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
+<dt>labels (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
 </dd>
-<dt>le (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
+<dt>label_encoder (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
 </dd>
 </dl>
 </dd>
@@ -147,15 +161,15 @@ Can convert labels in some cases.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.check_input_type">
-<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_input_type" title="Permalink to this definition"></a></dt>
-<dd><p>Verify the format of labels and features depending on the type of the estimator.
-Can convert labels in some cases.</p>
+<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_input_type" title="Permalink to this definition"></a></dt>
+<dd><p>Verify the format of labels and features depending on the type of the estimator.</p>
+<p>Can convert labels in some cases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>X (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing features</p>
 </dd>
-<dt><strong>y (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
+<dt><strong>labels (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
 </dd>
 <dt><strong>estimator (ERM):</strong></dt><dd><p>The estimator which will be fitted</p>
 </dd>
@@ -165,9 +179,9 @@ Can convert labels in some cases.</p>
 <dd class="field-even"><dl class="simple">
 <dt>X (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted features if required by the estimator.</p>
 </dd>
-<dt>y (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
+<dt>labels (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
 </dd>
-<dt>le (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
+<dt>label_encoder (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
 </dd>
 </dl>
 </dd>
@@ -189,7 +203,7 @@ Can convert labels in some cases.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.check_positive_parameter">
 <span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_positive_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_positive_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_positive_parameter" title="Permalink to this definition"></a></dt>
-<dd><p>Check that a parameter if a number and positive</p>
+<dd><p>Check that a parameter if a number and positive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -226,14 +240,15 @@ Can convert labels in some cases.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.check_input_fit">
-<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_input_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_input_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_input_fit" title="Permalink to this definition"></a></dt>
-<dd><p>Check and convert (if necessary) the different input arrays required for training according to the estimator type.</p>
+<span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_input_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_input_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_input_fit" title="Permalink to this definition"></a></dt>
+<dd><p>Check the different input arrays required for training according to the estimator type.</p>
+<p>Can convert data if necessary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>X (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing features</p>
 </dd>
-<dt><strong>y (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
+<dt><strong>labels (numpy array or scipy sparse CSR matrix):</strong></dt><dd><p>Numpy array containing labels</p>
 </dd>
 <dt><strong>estimator (ERM):</strong></dt><dd><p>The estimator which will be fitted</p>
 </dd>
@@ -243,9 +258,9 @@ Can convert labels in some cases.</p>
 <dd class="field-even"><dl class="simple">
 <dt>X (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted features if required by the estimator.</p>
 </dd>
-<dt>y (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
+<dt>labels (numpy array or scipy sparse CSR matrix):</dt><dd><p>Converted labels if required by the estimator.</p>
 </dd>
-<dt>le (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
+<dt>label_encoder (sklearn.LabelEncoder):</dt><dd><p>Convert text labels if needed</p>
 </dd>
 </dl>
 </dd>
@@ -271,8 +286,7 @@ Can convert labels in some cases.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cyanure.data_processing.check_input_inference">
 <span class="sig-prename descclassname"><span class="pre">cyanure.data_processing.</span></span><span class="sig-name descname"><span class="pre">check_input_inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cyanure/data_processing.html#check_input_inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyanure.data_processing.check_input_inference" title="Permalink to this definition"></a></dt>
-<dd><p>Check the format of the array which will be used for inference.
-Input array can be converted</p>
+<dd><p>Check the format of the array which will be used for inference. Input array can be converted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">

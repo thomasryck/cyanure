@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Cyanure’s documentation! &mdash; Cyanure 0.2 documentation</title>
+  <title>Welcome to Cyanure’s documentation! &mdash; Cyanure 1.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -14,13 +14,15 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Python API" href="pythonAPI/pythonAPI.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+    <link rel="prev" title="Table of Contents" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,8 +40,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Cyanure’s documentation!</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#main-features">Main features</a></li>
 </ul>
@@ -65,8 +66,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to Cyanure’s documentation!</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Cyanure’s documentation!</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/welcome.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -77,7 +78,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="welcome-to-cyanure-s-documentation">
-<h1>Welcome to Cyanure’s documentation!<a class="headerlink" href="#welcome-to-cyanure-s-documentation" title="Permalink to this headline"></a></h1>
+<h1>Welcome to Cyanure’s documentation!<a class="headerlink" href="#welcome-to-cyanure-s-documentation" title="Permalink to this heading"></a></h1>
 <p>Cyanure is an open-source C++ software package with a Python 3 interface.
 The goal of Cyanure is to provide state-of-the-art solvers for learning linear models,
 based on stochastic variance-reduced stochastic optimization with
@@ -85,7 +86,7 @@ acceleration mechanisms and Quasi-Newton principles.
 Cyanure can handle a large variety of loss functions (logistic, square,
 squared hinge, multinomial logistic) and regularization functions (<span class="math notranslate nohighlight">\(\ell_2\)</span>,
 <span class="math notranslate nohighlight">\(\ell_1\)</span>, elastic-net, fused Lasso, multi-task group Lasso).
-It provides a simple Python API, which is very close to that of scikit-learn,
+It provides a simple Python API, which should be fully compatible with scikit-learn,
 which should be extended to other languages such as R or Matlab in a near future.</p>
 <p>The code is written by <a class="reference external" href="http://julien.mairal.org">Julien Mairal</a> (Inria, Univ. Grenoble-Alpes) and Thomas Ryckeboer (Inria), and
 a documentation is provided in pdf in the following arXiv document</p>
@@ -93,7 +94,7 @@ a documentation is provided in pdf in the following arXiv document</p>
 <li><p>Julien Mairal. <a class="reference external" href="https://arxiv.org/abs/1912.08165">Cyanure: An Open-Source Toolbox for Empirical Risk Minimization for Python, C++, and soon more</a> arXiv:1912.08165.  2019</p></li>
 </ul>
 <div class="section" id="main-features">
-<h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline"></a></h2>
+<h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt>Cyanure is build upon several goals and principles:</dt><dd><ul class="simple">
 <li><p><strong>Cyanure is memory efficient</strong>. In case of dense matrix, it will
@@ -115,22 +116,22 @@ copy as well.</p></li>
 </div>
 </div>
 <div class="section" id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this headline"></a></h1>
+<h1>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h1>
 <p>Cyanure is distributed under BSD-3-Clause license. Even though this is non-legally binding, the author kindly ask users to cite the previous arXiv document in their publications, as well as the publication related to the algorithm they have chosen (see References section).
 Note that if you have chosen the solver ‘auto’, you are likely to use <a class="reference internal" href="references.html#qning" id="id2"><span>[QNING]</span></a> or <a class="reference internal" href="references.html#catalyst" id="id3"><span>[CATALYST]</span></a> combined with <a class="reference internal" href="references.html#miso" id="id4"><span>[MISO]</span></a>.</p>
 </div>
 <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>The recommanded installation procedure is to use either conda or pip.</p>
-<p>The package available on conda and pip are shipped with OpenBLAS and OpenMP except for Windows which does not use OpenMP.
-For conda the package is available on conda forge.</p>
+<p>The package available on pip are shipped with OpenBLAS and OpenMP except for Windows which does not use OpenMP.
+For conda the package is available on conda forge and support every BLAS implementation provided by conda forge.</p>
 <p>You can either install with:</p>
 <blockquote>
 <div><p><cite>conda install -c conda-forge cyanure</cite></p>
 <p>or</p>
 <p><cite>pip install cyanure</cite></p>
 </div></blockquote>
-<p>You can also install Cyanure from the sources. However, the setup file is not mature enough to work with a variety of BLAS configuration (especially on Windows).</p>
+<p>You can also install Cyanure from the sources. However, the setup file is not mature enough to work with a variety of BLAS configuration (especially on Windows). Do not hesitate to open an issue if you encounter difficulties installing the package.</p>
 <p>On top of that, you can not use default compiler to compile on MacOS with OpenMP.</p>
 <a class="reference internal image-reference" href="_images/logo-inria-scientifique-couleur.jpg"><img alt="_images/logo-inria-scientifique-couleur.jpg" src="_images/logo-inria-scientifique-couleur.jpg" style="width: 35%;" /></a>
 <a class="reference internal image-reference" href="_images/erc-logo.gif"><img alt="_images/erc-logo.gif" src="_images/erc-logo.gif" style="width: 15%;" /></a>
@@ -141,7 +142,7 @@ For conda the package is available on conda forge.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Table of Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pythonAPI/pythonAPI.html" class="btn btn-neutral float-right" title="Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
